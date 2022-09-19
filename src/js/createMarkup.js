@@ -29,5 +29,9 @@ function createMarkup(resp) {
 </div>
 </a>`
     }, '')
-    refs.galleryContainer.insertAdjacentHTML("afterbegin", markup);
+    if (refs.galleryContainer.children.length === 0) {
+          refs.galleryContainer.insertAdjacentHTML("afterbegin", markup);  
+    } else {
+        refs.galleryContainer.insertAdjacentHTML("beforeend", markup);  
+    }
 }

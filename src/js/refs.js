@@ -4,3 +4,5 @@ const refs = {
     form: document.querySelector('form'),
     galleryContainer: document.querySelector('.gallery')
 }
+
+

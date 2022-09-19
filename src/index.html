@@ -4,11 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <header>
+      <form class="search-form" id="search-form">
+        <div class="search-form__box">
+          <input
+            type="text"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Search images..."
+          />
+          <button type="submit">
+            <!-- Search -->
+            <svg class="search-icon" width="20" height="20">
+              <use href="./svg/sptite.svg#icon-search"></use>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </header>
+
+    <script src="index.js" type="module"></script>
   </body>
 </html>

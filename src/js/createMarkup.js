@@ -1,6 +1,6 @@
 export {createMarkup}
 
-import refs from "./refs";
+import { refs } from "./refs";
 
 function createMarkup(resp) {
     console.log(resp.data.hits);

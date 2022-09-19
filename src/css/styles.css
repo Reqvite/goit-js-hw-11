@@ -1,6 +1,7 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
 
 body{
+    color: #ffffff;
     background-color: #7d7777;
 }
 
@@ -8,6 +9,19 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+a{
+    transform: scale(1);
+    color: currentColor;
+    text-decoration: none;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover,
+a:focus{
+    z-index: 100;
+    transform: scale(1.15);
 }
 
 header {
@@ -30,15 +44,12 @@ input{
     border-radius: 4px;
     outline: none;
 }
-input::placeholder{
-   
-}
 
 .search-form__box{
     position: relative;
 }
 
-button{
+.button-submit{
     cursor: pointer;
     position: absolute;
     height: 100%;
@@ -50,8 +61,8 @@ button{
     transition:  background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover,
-button:focus{
+.button-submit:hover,
+.button-submit:focus{
     background-color: rgb(190, 188, 188);
 }
 
@@ -59,4 +70,55 @@ button:focus{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.section-gallery{
+    padding-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.gallery{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+}
+
+.photo-card {
+    width: 400px;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.gallery-img{
+    height: 250px;
+}
+.info {
+ display: flex;
+  justify-content: center;
+    border-radius: 0 0 5px 5px;
+   background-color: #3c3a3a;
+
+}
+
+.info-item{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info-item:not(:first-child) {
+ margin-left: 25px;
 }

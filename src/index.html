@@ -15,8 +15,8 @@
             autocomplete="off"
             placeholder="Search images..."
           />
-          <button type="submit">
-            <!-- Search -->
+          <button class="button-submit" type="submit">
+            <span class="visually-hidden">Search</span>
             <svg class="search-icon" width="20" height="20">
               <use href="./svg/sptite.svg#icon-search"></use>
             </svg>
@@ -24,7 +24,12 @@
         </div>
       </form>
     </header>
-
+    <main>
+      <section class="section-gallery">
+        <div class="gallery"></div>
+        <!-- <button type="button" class="load-more">Load more</button> -->
+      </section>
+    </main>
     <script src="index.js" type="module"></script>
   </body>
 </html>

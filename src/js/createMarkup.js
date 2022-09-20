@@ -36,5 +36,5 @@ const createMarkup = resp => {
     } else {
       refs.galleryContainer.insertAdjacentHTML("beforeend", markup);  
   }
-      simpleLightbox = new SimpleLightbox('.gallery a',).refresh();
+     let simpleLightbox = new SimpleLightbox('.gallery a',).refresh();
 }

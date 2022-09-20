@@ -64,7 +64,7 @@ async function updateGallery() {
     try {
         const resp = await fetchPhotos(countPage)
         createMarkup(resp)
-        simpleLightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250,  }).refresh();
+        simpleLightbox = new SimpleLightbox('.gallery a').refresh();
     window.addEventListener('scroll', checkCoordinates, {passive: true})
     } catch (error) {
         console.log(error.message);

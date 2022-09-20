@@ -1,4 +1,5 @@
 import './css/styles.css';
+
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import Notiflix from 'notiflix';
@@ -9,7 +10,7 @@ import { createMarkup } from './js/createMarkup';
 import activeScroll from './js/scrollBtn';
 
  
-refs.form.addEventListener('submit', handleForm, {capture: true});
+refs.form.addEventListener('submit', handleForm);
 
 const oldValue = [];
 let countPage = 0;
@@ -32,12 +33,14 @@ async function handleForm(e) {
     try {
         const resp = await fetchPhotos(countPage);
         if (resp.data.hits.length === 0) {
-         Notiflix.Notify.info('Sorry, there are no images matching your search query. Please try again.')
+            Notiflix.Notify.info('Sorry, there are no images matching your search query. Please try again.')
+            refs.scrollBtn.classList.add('is-hidden');
+            refs.loadingBtn.classList.add('is-hidden');
     } else {
          Notiflix.Notify.success(`Hooray! We found ${resp.data.totalHits} images.`);
             createMarkup(resp)
             simpleLightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 }).refresh();
-        window.addEventListener('scroll', checkCoordinates)
+        window.addEventListener('scroll', checkCoordinates, {passive: true})
     } 
     } catch (error) {
         console.log(error.message);
@@ -53,7 +56,7 @@ async function handleForm(e) {
      if (documentRect.bottom <= clientHeight + 500) {
          updateGallery()
          activeScroll()
-        window.removeEventListener('scroll', checkCoordinates)
+        window.removeEventListener('scroll', checkCoordinates, {passive: true})
     }
 }
 
@@ -63,10 +66,11 @@ async function updateGallery() {
         const resp = await fetchPhotos(countPage)
         createMarkup(resp)
         simpleLightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250,  }).refresh();
-    window.addEventListener('scroll', checkCoordinates)
+    window.addEventListener('scroll', checkCoordinates, {passive: true})
     } catch (error) {
         console.log(error.message);
         Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
+        refs.loadingBtn.classList.add('is-hidden');
         return;
   }
 

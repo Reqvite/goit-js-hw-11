@@ -40,14 +40,21 @@ header {
     background-color: rgb(51, 46, 46);
 }
 
-input{
+
+@media screen and (min-width: 250px){
+    input{
     padding: 8px;
-    width: 350px;
+    width: 250px;
     height: 40px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
     outline: none;
 }
+    @media screen and (min-width: 780px){
+    input{
+    width: 350px;
+}
+ }
 
 .search-form__box{
     position: relative;
@@ -85,16 +92,40 @@ input{
 
 }
 
-.gallery{
+
+
+   @media screen and (min-width: 500px) { 
+    .gallery{
     display: grid;
     justify-content: center;
-    grid-template-columns: auto auto auto auto;
+    align-items: c;
+    grid-template-columns: auto ;
     gap: 10px;
-}
+   }
 
-.photo-card {
-    width: 400px;
+   @media screen and (min-width: 768px){
+    .gallery{
+        grid-template-columns: auto auto;
+    }
+   }
+
+   @media screen and (min-width: 1200px){
+    .gallery{
+        grid-template-columns: auto auto auto;
+    }
+   }
+   @media screen and (min-width: 1400px){
+    .gallery{
+        grid-template-columns: auto auto auto auto;
+    }
+   }
 }
+   
+
+    .photo-card {
+        max-width: 400px;
+    }
+
 
 .visually-hidden {
     clip: rect(0 0 0 0);
@@ -114,7 +145,6 @@ input{
   justify-content: center;
     border-radius: 0 0 5px 5px;
    background-color: #3c3a3a;
-
 }
 
 .info-item{
@@ -139,13 +169,27 @@ input{
     background-color: rgb(51, 46, 46);
     opacity: 1;
     fill: rgb(253, 244, 244);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+    opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-button:hover{
     background-color: #5c4f4f;
+    opacity: 1;
 }
 
 .scroll-button.is-hidden{
     opacity: 0;
+}
+
+.loading{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+   opacity: 1;
+}
+
+.loading.is-hidden{
+   opacity: 0;
 }

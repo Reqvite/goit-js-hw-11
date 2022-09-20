@@ -1,15 +1,13 @@
 import axios from "axios";
 import { refs} from "./refs";
-
-export { fetchPhotos, countPage }
+export { fetchPhotos}
 
 const API_KEY = '30030666-7b24208312db31759c6c143d0';
 
-let countPage = 0;
 
-async function fetchPhotos() {
-    countPage += 1;
-   return  await axios({
+async function fetchPhotos(countPage) {
+    console.log(countPage);
+   return await axios({
     method: 'get',
     url: 'https://pixabay.com/api/',
     params: {
@@ -22,6 +20,7 @@ async function fetchPhotos() {
         page: countPage,
        }
    })
+
 }
 
 

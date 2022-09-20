@@ -1,9 +1,12 @@
-export {createMarkup}
+export { createMarkup }
+
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 import { refs } from "./refs";
 
-function createMarkup(resp) {
-    const markup = resp.data.hits.reduce((acc, el) => {
+const createMarkup = resp => {
+  const markup = resp.data.hits.reduce((acc, el) => {
         const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = el;
        return acc + `<a href ="${largeImageURL}" class="img-link>"><div class="photo-card">
   <img  class="gallery-img" src="${webformatURL}" alt="${tags}" loading="lazy"  width="400" />
@@ -29,8 +32,9 @@ function createMarkup(resp) {
 </a>`
     }, '')
     if (refs.galleryContainer.children.length === 0) {
-          refs.galleryContainer.insertAdjacentHTML("afterbegin", markup);  
+      refs.galleryContainer.insertAdjacentHTML("afterbegin", markup);  
     } else {
-        refs.galleryContainer.insertAdjacentHTML("beforeend", markup);  
-    }
+      refs.galleryContainer.insertAdjacentHTML("beforeend", markup);  
+  }
+      simpleLightbox = new SimpleLightbox('.gallery a',).refresh();
 }

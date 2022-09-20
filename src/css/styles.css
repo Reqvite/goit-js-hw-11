@@ -200,3 +200,8 @@ header {
 .loading.is-hidden{
    opacity: 0;
 }
+
+.icon-arrow-up{
+    margin-left: auto;
+    margin-right: auto;
+}

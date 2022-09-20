@@ -4,8 +4,8 @@ export { fetchPhotos}
 
 const API_KEY = '30030666-7b24208312db31759c6c143d0';
 
-async function fetchPhotos(countPage) {
-   return await axios({
+ const fetchPhotos = countPage => {
+   return  axios({
     method: 'get',
     url: 'https://pixabay.com/api/',
     params: {
@@ -18,7 +18,6 @@ async function fetchPhotos(countPage) {
         page: countPage,
        }
    })
-
 }
 
 

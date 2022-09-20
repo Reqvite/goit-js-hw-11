@@ -1,14 +1,20 @@
 import './css/styles.css';
-import { refs } from './js/refs';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 import Notiflix from 'notiflix';
+
+import { refs } from './js/refs';
 import { fetchPhotos} from './js/fetchPhotos';
 import { createMarkup } from './js/createMarkup';
 import activeScroll from './js/scrollBtn';
+
  
-refs.form.addEventListener('submit', handleForm);
+refs.form.addEventListener('submit', handleForm, {capture: true});
 
 const oldValue = [];
 let countPage = 0;
+let simpleLightbox;
+
 
 async function handleForm(e) {
     e.preventDefault();
@@ -29,7 +35,8 @@ async function handleForm(e) {
          Notiflix.Notify.info('Sorry, there are no images matching your search query. Please try again.')
     } else {
          Notiflix.Notify.success(`Hooray! We found ${resp.data.totalHits} images.`);
-        createMarkup(resp)
+            createMarkup(resp)
+            simpleLightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 }).refresh();
         window.addEventListener('scroll', checkCoordinates)
     } 
     } catch (error) {
@@ -54,7 +61,8 @@ async function updateGallery() {
     countPage += 1;
     try {
         const resp = await fetchPhotos(countPage)
-    createMarkup(resp)
+        createMarkup(resp)
+        simpleLightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250,  }).refresh();
     window.addEventListener('scroll', checkCoordinates)
     } catch (error) {
         console.log(error.message);

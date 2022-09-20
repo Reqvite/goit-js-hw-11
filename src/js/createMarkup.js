@@ -3,10 +3,9 @@ export {createMarkup}
 import { refs } from "./refs";
 
 function createMarkup(resp) {
-    console.log(resp);
     const markup = resp.data.hits.reduce((acc, el) => {
         const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = el;
-       return acc + `<a href ="" class="img-link>"><div class="photo-card">
+       return acc + `<a href ="${largeImageURL}" class="img-link>"><div class="photo-card">
   <img  class="gallery-img" src="${webformatURL}" alt="${tags}" loading="lazy"  width="400" />
   <div class="info">
     <p class="info-item">

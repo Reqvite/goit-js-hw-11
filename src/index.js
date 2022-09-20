@@ -16,7 +16,6 @@ const oldValue = [];
 let countPage = 0;
 let simpleLightbox;
 
-
 async function handleForm(e) {
     e.preventDefault();
     if (refs.input.value === '') {
@@ -39,7 +38,7 @@ async function handleForm(e) {
     } else {
          Notiflix.Notify.success(`Hooray! We found ${resp.data.totalHits} images.`);
             createMarkup(resp)
-            simpleLightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 }).refresh();
+            simpleLightbox = new SimpleLightbox('.gallery a',).refresh();
         window.addEventListener('scroll', checkCoordinates, {passive: true})
     } 
     } catch (error) {

@@ -16,12 +16,12 @@ let countPage = 0;
         Notiflix.Notify.info('Enter something..')
          return;
     }
-    if (refs.input.value === oldValue[0]) {
+    if (refs.input.value.trim() === oldValue[0]) {
         Notiflix.Notify.info('Enter something new..');
         return;
     } else {
         clearContainer() 
-    oldValue.push();
+        oldValue.push(refs.input.value);
         countPage += 1;
     try {
         const resp = await fetchPhotos(countPage);

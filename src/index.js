@@ -9,11 +9,10 @@ import activeScroll from './js/scrollBtn';
 
 const oldValue = [];
 let countPage = 0;
-let totalPages = 0
 
  const handleForm = async e => {
-    e.preventDefault();
-    if (refs.input.value === '') {
+     e.preventDefault();
+    if (refs.input.value.trim() === '') {
         Notiflix.Notify.info('Enter something..')
          return;
     }
@@ -22,9 +21,8 @@ let totalPages = 0
         return;
     } else {
         clearContainer() 
-    oldValue.push(refs.input.value);
+    oldValue.push();
         countPage += 1;
-        totalPages += 40;
     try {
         const resp = await fetchPhotos(countPage);
         if (resp.data.hits.length === 0) {
@@ -34,7 +32,11 @@ let totalPages = 0
     } else {
          Notiflix.Notify.success(`Hooray! We found ${resp.data.totalHits} images.`);
             createMarkup(resp);
-            window.addEventListener('scroll', checkCoordinates);
+            if (resp.data.hits.length !== 40) {
+                return
+            } else {
+             window.addEventListener('scroll', checkCoordinates);
+            }
     } 
     } catch (error) {
         console.log(error.message);

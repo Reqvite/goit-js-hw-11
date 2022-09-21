@@ -1,4 +1,4 @@
-export { createMarkup }
+export { createMarkup, refreshSimpleBox }
 
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -34,7 +34,18 @@ const createMarkup = resp => {
     if (refs.galleryContainer.children.length === 0) {
       refs.galleryContainer.insertAdjacentHTML("afterbegin", markup);  
     } else {
-      refs.galleryContainer.insertAdjacentHTML("beforeend", markup);  
+      refs.galleryContainer.insertAdjacentHTML("beforeend", markup); 
   }
-     let simpleLightbox = new SimpleLightbox('.gallery a',).refresh();
+   let simpleLightbox = new SimpleLightbox('.gallery a',);
 }
+
+ const refreshSimpleBox = () => {
+       if (document.querySelectorAll('.sl-wrapper').length !== 1) {
+        while (document.querySelectorAll('.sl-wrapper').length > 1) {
+        document.querySelector('.sl-wrapper').remove()
+            document.querySelector('.sl-overlay').remove() 
+           }
+     }
+}
+
+

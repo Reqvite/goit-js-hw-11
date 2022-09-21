@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 
 import { refs } from './js/refs';
 import { fetchPhotos} from './js/fetchPhotos';
-import { createMarkup } from './js/createMarkup';
+import { createMarkup, refreshSimpleBox } from './js/createMarkup';
 import activeScroll from './js/scrollBtn';
 
 const oldValue = [];
@@ -60,6 +60,7 @@ const checkCoordinates =() => {
     try {
         const resp = await fetchPhotos(countPage)
         createMarkup(resp);
+         window.addEventListener('click', refreshSimpleBox)
     } catch (error) {
         console.log(error.message);
         Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
@@ -72,6 +73,7 @@ const clearContainer = () =>{
     countPage = 0;
     refs.galleryContainer.innerHTML = '';
     window.removeEventListener('scroll', checkCoordinates);
+    window.removeEventListener('click', refreshSimpleBox)
     oldValue.shift();
 }
 

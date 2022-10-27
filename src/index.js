@@ -33,6 +33,8 @@ let countPage = 0;
          Notiflix.Notify.success(`Hooray! We found ${resp.data.totalHits} images.`);
             createMarkup(resp);
             if (resp.data.hits.length !== 40) {
+                refs.scrollBtn.classList.add('is-hidden');
+            refs.loadingBtn.classList.add('is-hidden');
                 return
             } else {
              window.addEventListener('scroll', checkCoordinates);
